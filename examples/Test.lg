@@ -1,0 +1,7 @@
+->process
+
+v:test => str:Hello,__World!;
+gl:log => str:Hi,__World!;
+gl:log => g:test;
+
+->process end
