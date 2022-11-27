@@ -1,12 +1,15 @@
 local BoolFunctions = {
-	StringTable = {"false","true"},
-    FindTable = function(Tab, Value)
-        for Idx, Val in pairs(Tab) do
-            if Val == Value then
-                return Idx
-            end
-        end
-    end
+	StringTable = {
+		"false",
+		"true"
+	},
+	FindTable = function(Tab, Value)
+		for Idx, Val in pairs(Tab) do
+			if Val == Value then
+				return Idx
+			end
+		end
+	end
 }
 
 function BoolFunctions:FromNumber(Number)
@@ -14,9 +17,9 @@ function BoolFunctions:FromNumber(Number)
 end
 
 function BoolFunctions:FromString(String)
-	local FoundNumber = BoolFunctions.FindTable(BoolFunctions.StringTable,String:lower())
+	local FoundNumber = BoolFunctions.FindTable(BoolFunctions.StringTable, String:lower())
 	if FoundNumber then
-		return BoolFunctions:FromNumber(FoundNumber-1)
+		return BoolFunctions:FromNumber(FoundNumber - 1)
 	end
 	return false
 end
@@ -57,16 +60,16 @@ local Backend = {
 		end
 		return
 	end,
-    SplitString = function(Input, Sep)
-        if Sep == nil then
-            Sep = "%s"
-        end
-        local Result = {}
-        for Str in string.gmatch(Input, "([^"..Sep.."]+)") do
-                table.insert(Result, Str)
-        end
-        return Result
-    end
+	SplitString = function(Input, Sep)
+		if Sep == nil then
+			Sep = "%s"
+		end
+		local Result = {}
+		for Str in string.gmatch(Input, "([^" .. Sep .. "]+)") do
+			table.insert(Result, Str)
+		end
+		return Result
+	end
 }
 local Modules = {
 	BoolFunctions = require("bools")
